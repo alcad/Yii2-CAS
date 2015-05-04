@@ -1,6 +1,6 @@
 <?php
 
-namespace alcad\yii2-cas;
+namespace alcad\cas;
 
 use phpCAS;
 use yii\base\Component;

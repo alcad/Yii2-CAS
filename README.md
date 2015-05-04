@@ -15,7 +15,7 @@ return [
 		'port' => 443,
 		'uri' => '/cas',
 	],
-        ...
+	...
 ];
 ```
 
@@ -26,12 +26,12 @@ $config = [
 	'bootstrap' => [... , 'cas'],
 	'components' => [
 		'casUser' => [
-			'class' => 'alcad\cas\CasUser',
+			'class' => 'alcad\yii2-cas\CasUser',
 		]
 	],
 	'modules' => [
 		'cas' => [
-			'class' => 'alcad\cas\Cas',
+			'class' => 'alcad\yii2-cas\Cas',
 		],
 	]
 	...

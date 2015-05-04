@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\cas;
+namespace alcad\cas;
 
 use phpCAS;
 use Yii;
@@ -9,7 +9,7 @@ use yii\base\Module;
 
 class Cas extends Module implements BootstrapInterface
 {
-	public $controllerNamespace = 'app\modules\cas\controllers';
+	public $controllerNamespace = 'alcad\cas\controllers';
 
 	public function bootstrap($app)
 	{
@@ -17,7 +17,6 @@ class Cas extends Module implements BootstrapInterface
 		{
 			$this->_avviaCas();
 			$this->_yiiAccess();
-			$this->_sputaCazzate();
 		}
 	}
 
@@ -31,15 +30,6 @@ class Cas extends Module implements BootstrapInterface
 		}else{
 			\Yii::$app->getUser()->logout(true);
 		}
-//		$u-> setIdentity(Yii::$app->casUser->getUser());
-//		Yii::$app->user->login(Yii::$app->casUser->getUser());
-	}
-
-	private function _sputaCazzate()
-	{
-		echo "<br><br><br>";
-		var_dump("cas avviato via bootstrap");
-		var_dump(Yii::$app->casUser->isGuest);
 	}
 
 	private function _avviaCas()

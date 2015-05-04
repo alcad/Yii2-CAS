@@ -6,7 +6,7 @@
  * Contact info@alcad.it to know more.
  */
 
-namespace app\modules\cas;
+namespace alcad\cas;
 
 use yii\base\Object;
 use yii\web\IdentityInterface;

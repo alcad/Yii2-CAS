@@ -1,6 +1,6 @@
 <?php
 
-namespace alcad\cas;
+namespace alcad\yii2-cas;
 
 use phpCAS;
 use Yii;
@@ -9,7 +9,7 @@ use yii\base\Module;
 
 class Cas extends Module implements BootstrapInterface
 {
-	public $controllerNamespace = 'alcad\cas\controllers';
+	public $controllerNamespace = 'alcad\yii2-cas\controllers';
 
 	public function bootstrap($app)
 	{

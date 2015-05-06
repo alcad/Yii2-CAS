@@ -17,20 +17,13 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.0.0",
+        "php": ">=5.3.0",
         "yiisoft/yii2": "~2.0",
         "jasig/phpcas": "*"
     },
     "autoload": {
         "psr-4": {
-            "alcad\\yii2-cas\\": ""
-        }
-    },
-    "extra": {
-        "bootstrap": "alcad\\yii2-cas\\Bootstrap",
-        "branch-alias": {
-            "dev-master": "0.1.x-dev",
-            "dev-develop": "0.2.x-dev"
+            "alcad\\cas\\": ""
         }
     }
 }

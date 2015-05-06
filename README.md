@@ -2,7 +2,7 @@
 Simple wrapper for phpCAS in Yii2
 
 > **NOTE:** Module is in initial development.
-jasig/phpCAS is required
+ jasig/phpCAS is required
 
 ## Configuration
 
@@ -26,12 +26,12 @@ $config = [
 	'bootstrap' => [... , 'cas'],
 	'components' => [
 		'casUser' => [
-			'class' => 'alcad\yii2-cas\CasUser',
+			'class' => 'alcad\cas\CasUser',
 		]
 	],
 	'modules' => [
 		'cas' => [
-			'class' => 'alcad\yii2-cas\Cas',
+			'class' => 'alcad\cas\Cas',
 		],
 	]
 	...

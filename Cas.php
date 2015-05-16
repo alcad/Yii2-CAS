@@ -16,18 +16,24 @@ class Cas extends Module implements BootstrapInterface
 		if ($app->hasModule('cas') && ($module = $app->getModule('cas')) instanceof Module)
 		{
 			$this->_avviaCas();
-			$this->_yiiAccess();
+			if (\Yii::$app->user->isGuest)
+			{
+				$this->_yiiAccess();
+			}
 		}
 	}
 
 	private function _yiiAccess()
 	{
-		if(!Yii::$app->casUser->isGuest) {
+		if (!Yii::$app->casUser->isGuest)
+		{
 			$u = new CasInterface();
 			$u->username = Yii::$app->casUser->getUser();
 
 			\Yii::$app->getUser()->login($u);
-		}else{
+		}
+		else
+		{
 			\Yii::$app->getUser()->logout(true);
 		}
 	}

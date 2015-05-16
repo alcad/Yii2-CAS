@@ -43,5 +43,9 @@ class CasInterface implements IdentityInterface
 	{
 		return $this->authKey === $authKey;
 	}
+	
+	public function getIsAdmin() {
+		return false;
+	}
 
 }

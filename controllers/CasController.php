@@ -13,7 +13,7 @@ class CasController extends Controller
 	public function actionLogin()
 	{
 		phpCAS::forceAuthentication();
-		return $this->redirect(Yii::$app->homeUrl);
+		return $this->redirect($this->goBack());
 	}
 
 	public function actionLogout()
@@ -25,7 +25,7 @@ class CasController extends Controller
 		{
 			phpCAS::logout(['service' => $ret_url]);
 		}
-		return $this->redirect(Yii::$app->homeUrl);
+		return $this->redirect($url);
 	}
 
 }

@@ -21,7 +21,8 @@ class CasController extends Controller
 		$url = Yii::$app->homeUrl;
 		$ret_url = Url::toRoute($url, true);
 
-		if (phpCAS::isAuthenticated())
+//		if (phpCAS::isAuthenticated())
+		if (phpCAS::checkAuthentication())
 		{
 			phpCAS::logout(['service' => $ret_url]);
 		}

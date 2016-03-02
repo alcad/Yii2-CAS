@@ -14,6 +14,7 @@ return [
 		'host' => 'https://app.example.com/',
 		'port' => 443,
 		'uri' => '/cas',
+                'log_file' => '/tmp/phpCAS.log',
 	],
 	...
 ];

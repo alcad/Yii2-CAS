@@ -6,6 +6,7 @@ use phpCAS;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\Module;
+use const CAS_VERSION_2_0;
 
 class Cas extends Module implements BootstrapInterface
 {
@@ -44,13 +45,32 @@ class Cas extends Module implements BootstrapInterface
 		$host = $params['host'];
 		$port = $params['port'];
 		$uri = $params['uri'];
+		$filename = $params['log_file'];
 
 		// Enable debugging
-		phpCAS::setDebug();
+		phpCAS::setDebug($filename);
 
 		// Initialize phpCAS
 		phpCAS::client(CAS_VERSION_2_0, $host, $port, $uri);
 		phpCAS::setNoCasServerValidation();
+//		var_dump(Yii::$app);//->controller->action);
+//		die();
+//		if (!\Yii::$app->user->isGuest)
+//		{
+//			\Yii::$app->getUser()->logout(true);
+//			phpCAS::forceAuthentication();
+//		}
+//		$role = AuthManager::getUserRole();
+//		$app = \Yii::$app;
+//		$user = \Yii::$app->user->id;
+//		if($role == AuthManager::ROLE_RICHIEDENTE){
+//			phpCAS::forceAuthentication();
+//		}
+//		phpCAS::isAuthenticated();
+//		phpCAS::checkAuthentication();
+//		if(phpCAS::checkAuthentication() && phpCAS::isAuthenticated()){
+//			phpCAS::forceAuthentication();
+//		}
 	}
 
 }

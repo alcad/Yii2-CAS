@@ -6,7 +6,6 @@ use phpCAS;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\base\Module;
-use const CAS_VERSION_2_0;
 
 class Cas extends Module implements BootstrapInterface
 {
@@ -16,7 +15,7 @@ class Cas extends Module implements BootstrapInterface
 	{
 		if ($app->hasModule('cas') && ($module = $app->getModule('cas')) instanceof Module)
 		{
-			$this->_avviaCas();
+			$this->_startCAS();
 			if (\Yii::$app->user->isGuest)
 			{
 				$this->_yiiAccess();
@@ -39,7 +38,7 @@ class Cas extends Module implements BootstrapInterface
 		}
 	}
 
-	private function _avviaCas()
+	private function _startCAS()
 	{
 		$params = Yii::$app->params['cas'];
 		$host = $params['host'];
@@ -53,24 +52,6 @@ class Cas extends Module implements BootstrapInterface
 		// Initialize phpCAS
 		phpCAS::client(CAS_VERSION_2_0, $host, $port, $uri);
 		phpCAS::setNoCasServerValidation();
-//		var_dump(Yii::$app);//->controller->action);
-//		die();
-//		if (!\Yii::$app->user->isGuest)
-//		{
-//			\Yii::$app->getUser()->logout(true);
-//			phpCAS::forceAuthentication();
-//		}
-//		$role = AuthManager::getUserRole();
-//		$app = \Yii::$app;
-//		$user = \Yii::$app->user->id;
-//		if($role == AuthManager::ROLE_RICHIEDENTE){
-//			phpCAS::forceAuthentication();
-//		}
-//		phpCAS::isAuthenticated();
-//		phpCAS::checkAuthentication();
-//		if(phpCAS::checkAuthentication() && phpCAS::isAuthenticated()){
-//			phpCAS::forceAuthentication();
-//		}
 	}
 
 }

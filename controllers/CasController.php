@@ -13,7 +13,7 @@ class CasController extends Controller
 	public function actionLogin()
 	{
 		phpCAS::forceAuthentication();
-		return $this->redirect($this->goBack());
+		return $this->goBack();
 	}
 
 	public function actionLogout()

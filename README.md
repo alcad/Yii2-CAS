@@ -6,34 +6,25 @@ Simple wrapper for phpCAS in Yii2
 
 ## Configuration
 
-config/param.php
-```php
-return [
-	...
-	'cas' => [
-		'host' => 'https://app.example.com/',
-		'port' => 443,
-		'uri' => '/cas',
-                'log_file' => '/tmp/phpCAS.log',
-	],
-	...
-];
-```
+
 
 config/web.php
 ```php
 $config = [
 	...
 	'bootstrap' => [... , 'cas'],
-	'components' => [
-		'casUser' => [
-			'class' => 'alcad\cas\CasUser',
-		]
-	],
+
 	'modules' => [
-		'cas' => [
-			'class' => 'alcad\cas\Cas',
-		],
+        'cas' => [
+            'class' => 'alcad\cas\Cas',
+            'host' => 'your.cas.server.com',
+            'port' => 443,
+            'uri' => '/cas',
+            'logFile' => false, //'/tmp/phpCAS.log',
+            'as casLogin' => [
+                'class' => 'common\behaviors\CasLoginBehavior' //see example
+            ]
+        ],
 	]
 	...
 ]

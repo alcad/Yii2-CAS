@@ -3,7 +3,7 @@
     "description": "Simple client for CAS",
     "keywords": ["yii2", "yii2-cas", "cas client for yii", "alcad", "cas client"],
     "type": "yii2-extension",
-    "license": "GPLv2",
+    "license": "GNU General Public License v2.0",
     "support": {
         "issues": "https://github.com/alcad/yii2-cas/issues?state=open",
         "source": "https://github.com/alcad/yii2-cas"

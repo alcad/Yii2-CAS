@@ -9,7 +9,16 @@ use yii\base\Module;
 
 class Cas extends Module implements BootstrapInterface
 {
+	const EVENT_FIND_LOCAL_USER = 'findLocalUser';
+
 	public $controllerNamespace = 'alcad\cas\controllers';
+	public $host;
+	public $port;
+	public $uri;
+	public $logFile;
+
+	private $casUser;
+
 
 	public function bootstrap($app)
 	{
@@ -25,12 +34,12 @@ class Cas extends Module implements BootstrapInterface
 
 	private function _yiiAccess()
 	{
-		if (!Yii::$app->casUser->isGuest)
+		if (!$this->casUser->isGuest)
 		{
-			$u = new CasInterface();
-			$u->username = Yii::$app->casUser->getUser();
-
-			\Yii::$app->getUser()->login($u);
+			$localUser = $this->findLocalUser($this->casUser);
+			if($localUser) {
+				\Yii::$app->getUser()->login($localUser);
+			}
 		}
 		else
 		{
@@ -40,18 +49,22 @@ class Cas extends Module implements BootstrapInterface
 
 	private function _startCAS()
 	{
-		$params = Yii::$app->params['cas'];
-		$host = $params['host'];
-		$port = $params['port'];
-		$uri = $params['uri'];
-		$filename = $params['log_file'];
-
 		// Enable debugging
-		phpCAS::setDebug($filename);
+		phpCAS::setDebug($this->logFile);
 
 		// Initialize phpCAS
-		phpCAS::client(CAS_VERSION_2_0, $host, $port, $uri);
+		phpCAS::client(CAS_VERSION_2_0, $this->host, $this->port, $this->uri);
 		phpCAS::setNoCasServerValidation();
+		$this->casUser = Yii::createObject('alcad\cas\CasUser');
+	}
+
+	protected function findLocalUser($casUser)
+	{
+		$event = new FindLocalUserEvent([
+			'casIdentity' => $casUser,
+		]);
+		$this->trigger(self::EVENT_FIND_LOCAL_USER, $event);
+		return $event->localIdentity;
 	}
 
 }

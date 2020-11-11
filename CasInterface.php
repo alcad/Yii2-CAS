@@ -8,7 +8,7 @@
 
 namespace alcad\cas;
 
-use yii\base\Object;
+use yii\base\BaseObject;
 use yii\web\IdentityInterface;
 
 class CasInterface implements IdentityInterface
